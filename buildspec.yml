@@ -1,5 +1,13 @@
 version: 0.2
 
+env:
+  variables:
+  parameter-store:
+    SIMPLE_WEBAPP_SER: $SIMPLE_WEBAPP_SER,
+    SIMPLE_WEBAPP_HOST: $SIMPLE_WEBAPP_HOST 
+    SIMPLE_WEBAPP_TASK: $SIMPLE_WEBAPP_TASK 
+
+
 phases:
   install:
     commands:
