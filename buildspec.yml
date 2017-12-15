@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+      - apt-get update -y
+      - apt-get -y --force-yes install nodejs
+      - apt-get -y --force-yes install npm
+      - npm install n -g
+      - n 4.5.0
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - eval $(aws ecr get-login)
+  build:
+    commands:
+      - npm install -g ecs-task-deploy
+      - update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
+      - ecs-task-deploy -r 'us-east-1' -c 'default' -n $SIMPLE_WEBAPP_SER -i $SIMPLE_WEBAPP_HOST --kill-task $SIMPLE_WEBAPP_TASK
+  post_build:
+    commands:
+      - echo Build ended on `date`
