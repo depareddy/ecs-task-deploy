@@ -2,9 +2,9 @@ version: 0.2
 
 env:
   parameter-store:
-    SIMPLE_WEBAPP_SER: $SIMPLE_WEBAPP_SER
-    SIMPLE_WEBAPP_HOST: $SIMPLE_WEBAPP_HOST 
-    SIMPLE_WEBAPP_TASK: $SIMPLE_WEBAPP_TASK 
+    SIMPLE_WEBAPP_SER: "simplewebappdevserv"
+    SIMPLE_WEBAPP_HOST: "839749875901.dkr.ecr.us-east-1.amazonaws.com/simplewebappdev:latest" 
+    SIMPLE_WEBAPP_TASK: "simplewebappdev" 
 phases:
   install:
     commands:
