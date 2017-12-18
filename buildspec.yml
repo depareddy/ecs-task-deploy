@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-   ECSTASKDEPLOY:"ecs-task-deploy -r 'us-east-1' -c 'simplecluster' -n 'simplewebappdevserv' -i '839749875901.dkr.ecr.us-east-1.amazonaws.com/simplewebappdev:latest' --kill-task 'simplewebappdev'"
+   ECSTASKDEPLOY:"ecs-task-deploy -r \'us-east-1\' -c \'simplecluster\' -n \'simplewebappdevserv\' -i \'839749875901.dkr.ecr.us-east-1.amazonaws.com/simplewebappdev:latest\' --kill-task \'simplewebappdev\'"
 phases:
   install:
     commands:
