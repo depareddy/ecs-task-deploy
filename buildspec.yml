@@ -1,10 +1,8 @@
 version: 0.2
 
 env:
-  parameter-store:
-    SIMPLE_WEBAPP_SER: "simplewebappdevserv"
-    SIMPLE_WEBAPP_HOST: "839749875901.dkr.ecr.us-east-1.amazonaws.com/simplewebappdev:latest" 
-    SIMPLE_WEBAPP_TASK: "simplewebappdev" 
+  variables:
+   ECSTASKDEPLOY:"ecs-task-deploy -r 'us-east-1' -c 'simplecluster' -n 'simplewebappdevserv' -i '839749875901.dkr.ecr.us-east-1.amazonaws.com/simplewebappdev:latest' --kill-task 'simplewebappdev'"
 phases:
   install:
     commands:
@@ -22,7 +20,7 @@ phases:
     commands:
       - npm install -g ecs-task-deploy
       - update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
-      - ecs-task-deploy -r 'us-east-1' -c 'default' -n $SIMPLE_WEBAPP_SER -i $SIMPLE_WEBAPP_HOST --kill-task $SIMPLE_WEBAPP_TASK
+      - $ECSTASKDEPLOY
   post_build:
     commands:
       - echo Build ended on `date`
