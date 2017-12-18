@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    ECSTASKDEPLOY:""
+    ECSTASKDEPLOY: ""
 phases:
   install:
     commands:
