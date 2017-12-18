@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-   ECSTASKDEPLOY:"ecs-task-deploy -r \'us-east-1\' -c \'simplecluster\' -n \'simplewebappdevserv\' -i \'839749875901.dkr.ecr.us-east-1.amazonaws.com/simplewebappdev:latest\' --kill-task \'simplewebappdev\'"
+    ECSTASKDEPLOY:""
 phases:
   install:
     commands:
@@ -20,7 +20,7 @@ phases:
     commands:
       - npm install -g ecs-task-deploy
       - update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
-      - $ECSTASKDEPLOY
+      - ecs-task-deploy -r 'us-east-1' -c 'simplecluster' -n 'simplewebappdevserv' -i '839749875901.dkr.ecr.us-east-1.amazonaws.com/simplewebappdev:latest' --kill-task 'simplewebappdev'
   post_build:
     commands:
       - echo Build ended on `date`
